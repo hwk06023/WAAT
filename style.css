@@ -1,0 +1,18 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.main-content {
+    float: left;
+    width: 70%;
+}
+
+.side-content {
+    float: right;
+    width: 30%;
+}
+
+
+
