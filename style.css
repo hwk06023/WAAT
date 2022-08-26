@@ -83,7 +83,7 @@ a {
 }
 
 .list-item > a:hover {
-    color: violet;
+    color: rgb(54, 104, 240);
 }
 
 .footer {
