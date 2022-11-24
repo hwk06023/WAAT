@@ -1,0 +1,48 @@
+<annotation>
+    <folder>images</folder>
+    <filename>maksssksksss186.png</filename>
+    <path>/Users/kimhyunwoo/Desktop/Programming /Personal/Git/WAAT/Python_/images/maksssksksss186.png</path>
+    <source>
+        <database>Unknown</database>
+    </source>
+    <size>
+        <width>267</width>
+        <height>400</height>
+        <depth>3</depth>
+    </size>
+    <segmented>0</segmented>
+    <object>
+        <name>1</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>67.35029602050781</xmin>
+            <ymin>8.2918701171875</ymin>
+            <xmax>251.9239959716797</xmax>
+            <ymax>400.0</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>1</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>0.0</xmin>
+            <ymin>6.2249555587768555</ymin>
+            <xmax>110.0495376586914</xmax>
+            <ymax>395.8470153808594</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>32</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>97.82138061523438</xmin>
+            <ymin>140.85646057128906</ymin>
+            <xmax>146.46470642089844</xmax>
+            <ymax>399.425537109375</ymax>
+        </bndbox>
+    </object>
+</annotation>

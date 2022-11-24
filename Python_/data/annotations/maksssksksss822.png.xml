@@ -1,0 +1,81 @@
+<annotation>
+    <folder>images</folder>
+    <filename>maksssksksss822.png</filename>
+    <path>/Users/kimhyunwoo/Desktop/Programming /Personal/Git/WAAT/Python_/images/maksssksksss822.png</path>
+    <source>
+        <database>Unknown</database>
+    </source>
+    <size>
+        <width>400</width>
+        <height>225</height>
+        <depth>3</depth>
+    </size>
+    <segmented>0</segmented>
+    <object>
+        <name>1</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>326.65924072265625</xmin>
+            <ymin>76.1740493774414</ymin>
+            <xmax>392.80133056640625</xmax>
+            <ymax>224.85540771484375</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>1</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>255.61460876464844</xmin>
+            <ymin>62.44701385498047</ymin>
+            <xmax>313.6280822753906</xmax>
+            <ymax>206.80746459960938</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>1</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>24.942684173583984</xmin>
+            <ymin>52.00459289550781</ymin>
+            <xmax>88.72404479980469</xmax>
+            <ymax>224.80203247070312</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>1</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>128.32740783691406</xmin>
+            <ymin>78.08501434326172</ymin>
+            <xmax>174.07919311523438</xmax>
+            <ymax>219.70321655273438</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>1</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>90.35101318359375</xmin>
+            <ymin>89.83048248291016</ymin>
+            <xmax>129.50338745117188</xmax>
+            <ymax>225.0</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>1</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>170.96575927734375</xmin>
+            <ymin>74.36742401123047</ymin>
+            <xmax>212.12339782714844</xmax>
+            <ymax>218.21926879882812</ymax>
+        </bndbox>
+    </object>
+</annotation>

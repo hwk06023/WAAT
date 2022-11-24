@@ -1,0 +1,37 @@
+<annotation>
+    <folder>images</folder>
+    <filename>maksssksksss513.png</filename>
+    <path>/Users/kimhyunwoo/Desktop/Programming /Personal/Git/WAAT/Python_/images/maksssksksss513.png</path>
+    <source>
+        <database>Unknown</database>
+    </source>
+    <size>
+        <width>267</width>
+        <height>400</height>
+        <depth>3</depth>
+    </size>
+    <segmented>0</segmented>
+    <object>
+        <name>1</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>157.86622619628906</xmin>
+            <ymin>25.889089584350586</ymin>
+            <xmax>264.3154296875</xmax>
+            <ymax>345.46826171875</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>1</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>33.10389709472656</xmin>
+            <ymin>20.854534149169922</ymin>
+            <xmax>160.04771423339844</xmax>
+            <ymax>384.17889404296875</ymax>
+        </bndbox>
+    </object>
+</annotation>
