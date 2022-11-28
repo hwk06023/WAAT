@@ -76,7 +76,7 @@ if __name__ == '__main__':
 
   device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
   data_loader = torch.utils.data.DataLoader(dataset, batch_size=4, collate_fn=collate_fn)
-
+ 
 
   if model_path:
     model = torch.load(model_path)
