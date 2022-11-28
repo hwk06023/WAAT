@@ -7,3 +7,6 @@ __pycache__
 local_settings.py
 db.sqlite3
 WAATvenv
+Python_/data/images
+Python_/data/annotations
+.vscodeg

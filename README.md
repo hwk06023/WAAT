@@ -6,8 +6,10 @@ Web Auto Annotation Tool
 <br/>
 <br/>
 
+<code>
+$ python3 WAAT_inference.py --input_dir '[PATH]' --annotation_dir '[PATH]'
+</code>
 
-### Getting ready
 
 
 <br/>
