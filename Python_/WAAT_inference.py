@@ -61,46 +61,76 @@ if __name__ == '__main__':
   parser.add_argument('--image_dir', default='./images', help='Dir Inference_Img')
   parser.add_argument('--model_path', default=None, help='Model path')
   parser.add_argument('--annotation_dir', default='./annotations', help='Dir to save annotations')
+  parser.add_argument('--ready_made_model', default='YOLOv5', help='choose in YOLOv5, FCOS, FasterRCNN, RETINANET')
 
   args = parser.parse_args()
+
+  model_list = ['YOLOv5', 'FCOS', 'FasterRCNN', 'RETINANET']
 
   img_path = args.image_dir
   model_path = args.model_path
   annotation_path = args.annotation_dir
+  model_choose = args.ready_made_model
+
+  conf = 0.5
+
+  if model_choose not in model_list:
+    print(f"No model named {model_choose}")
+    quit()
 
   labels = list()
   preds_adj_all = list()
   annot_all = list()
 
+  if model_path:
+    model = torch.load(model_path)
+  else:
+    if model_choose == model_list[0]:
+      model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
+    elif model_choose == model_list[1]:
+      model = torchvision.models.detection.fcos_resnet50_fpn(pretrained=True, pretrained_backbone = True)
+    elif model_choose == model_list[2]:
+      model = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained=True, pretrained_backbone = True)
+    elif model_choose == model_list[3]:
+      model =torchvision.models.detection.retinanet_resnet50_fpn(pretrained=True, pretrained_backbone = True)  
+  
   dataset = MyDataset(img_path)
 
   device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
   data_loader = torch.utils.data.DataLoader(dataset, batch_size=4, collate_fn=collate_fn)
- 
-
-  if model_path:
-    model = torch.load(model_path)
-  else:
-    model = torchvision.models.detection.ssd300_vgg16(pretrained=True, pretrained_backbone = True)
 
   model.to(device)
 
-  idx = 0
-  for im, _ in tqdm(data_loader, position = 0, leave = True):
-    im = list(img.to(device) for img in im)
+  if model_choose != "YOLOv5":
+    idx = 0
+    for im, _ in tqdm(data_loader, position = 0, leave = True):
+      im = list(img.to(device) for img in im)
 
-    with torch.no_grad():
-      preds_adj = make_prediction(model, im, 0.5)
-      preds_adj = [{k: v.to(torch.device('cpu')) for k, v in t.items()} for t in preds_adj]
-    
-    for i, image in enumerate(im):
-      # create pascal voc writer (image_path, width, height)
-      writer = Writer(data_loader.dataset.path+"/"+data_loader.dataset.imgs[idx], len(image[0][0]), len(image[0]))
+      with torch.no_grad():
+        preds_adj = make_prediction(model, im, conf)
+        preds_adj = [{k: v.to(torch.device('cpu')) for k, v in t.items()} for t in preds_adj]
+      
+      for i, image in enumerate(im):
+        # create pascal voc writer (image_path, width, height)
+        writer = Writer(data_loader.dataset.path+"/"+data_loader.dataset.imgs[idx], len(image[0][0]), len(image[0]))
 
 
-      # add objects (class, xmin, ymin, xmax, ymax)
-      for object_idx in range(len(preds_adj[i]['boxes'])):
-        writer.addObject(preds_adj[i]['labels'][object_idx].item(), preds_adj[i]['boxes'][object_idx][0].item(), preds_adj[i]['boxes'][object_idx][1].item(), preds_adj[i]['boxes'][object_idx][2].item(), preds_adj[i]['boxes'][object_idx][3].item())
+        # add objects (class, xmin, ymin, xmax, ymax)
+        for object_idx in range(len(preds_adj[i]['boxes'])):
+          writer.addObject(preds_adj[i]['labels'][object_idx].item(), preds_adj[i]['boxes'][object_idx][0].item(), preds_adj[i]['boxes'][object_idx][1].item(), preds_adj[i]['boxes'][object_idx][2].item(), preds_adj[i]['boxes'][object_idx][3].item())
 
-      writer.save(annotation_path+'/'+data_loader.dataset.imgs[idx]+'.xml')
-      idx += 1
+        writer.save(annotation_path+'/'+data_loader.dataset.imgs[idx]+'.xml')
+        idx += 1
+
+  else:
+    for image_name in tqdm(dataset.imgs, position = 0, leave = True):
+      preds = model(dataset.path +'/'+ image_name)
+      preds = preds.pandas().xyxy[0][preds.pandas().xyxy[0]['confidence'] > conf].to_numpy()
+
+      x, y, _ = np.array(Image.open(dataset.path +'/'+ image_name)).shape
+      writer = Writer(dataset.path +'/'+ image_name, x, y)
+
+      for pred in preds:
+        writer.addObject(pred[6], pred[0], pred[1], pred[2], pred[3])
+      
+      writer.save(annotation_path+'/'+image_name[:-4]+'.xml')
